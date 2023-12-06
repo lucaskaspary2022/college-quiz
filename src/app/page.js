@@ -193,7 +193,7 @@ function QuizPage() {
           </div>
           <div className="bg-[#F4F7FA] rounded-xl md:rounded-r-none flex flex-col h-full w-full md:w-1/2 md:p-8 p-8 items-center justify-center">
             {start ? <Quiz questions={questions} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion}/> : 
-            <div className='flex flex-col justify-between items-center text-center p-[20px] text-[26px]'>
+            <div className='flex flex-col justify-between text-black items-center text-center p-[18px] text-[26px]'>
               <h1>Faça o teste de perfil e descubra quais faculdades mais combinam com você.</h1>
               <button className='focus:outline-none hover:bg-red-400 w-[50%] text-[16px] bg-red-500 rounded-[15px] flex py-[10px] px-[10px] justify-center text-white items-center border-solid border-[3px] border-red-400 mt-[50px]' onClick={() => setStart(!start)}>START</button>
             </div>
