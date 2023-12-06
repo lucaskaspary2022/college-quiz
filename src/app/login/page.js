@@ -13,7 +13,8 @@ function SignInUpPage() {
   // const router = useRouter()
 
   return (
-    <div className="flex flex-col md:flex-row h-screen items-center justify-center bg-[#0e1532] font-custom">
+    <div className='flex flex-col items-center justify-center h-screen py-[100px] bg-[#0e1532]'>
+      <div className="flex flex-col md:flex-row h-full items-center justify-center bg-[#0e1532] pt-[100px] font-custom">
       {/* <PortalBG /> */}
       <div className="md:hidden flex-1" />
       <div className="shadow-xl overflow-visible min-h-[360px] md:h-[464px] md:w-[928px] flex flex-col md:flex-row items-center relative">
@@ -36,6 +37,10 @@ function SignInUpPage() {
       </div>
       <div className="md:hidden flex-1">
         {/* {signUp ? <SignUpRightComponentText /> : <SignInRightComponentText />} */}
+      </div>
+    </div>
+      <div className='mt-[20px] md:mt-[40px]'>
+        <Image src={SmallLogo} alt='bottom-logo' width={120}/>
       </div>
     </div>
   )

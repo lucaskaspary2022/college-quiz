@@ -72,9 +72,9 @@ function QuizPage() {
       index: 5,
 			questionText: 'Como você descreveria seu desempenho acadêmico?',
 			answerOptions: [
-				{ answerText: 'Acima da média, com notas excelentes(9-10)', value: 1 },
-				{ answerText: 'Um pouco acima da média, com bom desempenho acadêmico(7-8)', value: 1.5 },
-				{ answerText: 'Na média, com espaço para melhoria(6)', value: 2 },
+				{ answerText: 'Acima da média, com notas excelentes (9-10)', value: 1 },
+				{ answerText: 'Um pouco acima da média, com bom desempenho acadêmico (7-8)', value: 1.5 },
+				{ answerText: 'Na média, com espaço para melhoria (6)', value: 2 },
 				{ answerText: 'Abaixo da média (<6)', value: 3 },
 			],
       icon: <FaBookOpenReader size={150} color='white'/>,
@@ -174,6 +174,7 @@ function QuizPage() {
   }
 
 	const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [start, setStart] = useState(false)
 
   return (
     <div className='flex flex-col items-center justify-center h-screen py-[100px] bg-[#0e1532]'>
@@ -185,14 +186,25 @@ function QuizPage() {
             {/* <Image alt='small-logo' src={SmallLogo} height={100} width={100}/>
             */}
             {/* <FaBookOpenReader size={50}/> */}
-              {currentQuestion > 11 ? <Image alt='big-logo' src={SmallLogo} height={100} width={100}/> : questions[currentQuestion].smallicon}
+            { start ?
+              <>{currentQuestion > 11 ? <Image alt='big-logo' src={SmallLogo} height={100} width={100}/> : questions[currentQuestion].smallicon}</>
+              : <Image alt='big-logo' src={SmallLogo}  width={50}/>
+              }
           </div>
           <div className="bg-[#F4F7FA] rounded-xl md:rounded-r-none flex flex-col h-full w-full md:w-1/2 md:p-8 p-8 items-center justify-center">
-            <Quiz questions={questions} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion}/>
+            {start ? <Quiz questions={questions} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion}/> : 
+            <div className='flex flex-col justify-between items-center text-center p-[20px] text-[26px]'>
+              <h1>Faça o teste de perfil e descubra quais faculdades mais combinam com você.</h1>
+              <button className='focus:outline-none hover:bg-red-400 w-[50%] text-[16px] bg-red-500 rounded-[15px] flex py-[10px] px-[10px] justify-center text-white items-center border-solid border-[3px] border-red-400 mt-[50px]' onClick={() => setStart(!start)}>START</button>
+            </div>
+            }
           </div>
           <div className="hidden rounded-r-xl md:flex flex-col items-center justify-center h-full w-1/2 bg-red-500">
             <div className="flex text-white flex-col items-center justify-center">
-              {currentQuestion > 11 ? <Image alt='big-logo' src={SmallLogo} height={280} width={280}/> : questions[currentQuestion].icon}
+              { start ?
+                <>{currentQuestion > 11 ? <Image alt='big-logo' src={SmallLogo} height={280} width={280}/> : questions[currentQuestion].icon}</>
+                : <Image alt='big-logo' src={SmallLogo} height={280} width={280}/>
+              }
             </div>
           </div>
         </div>

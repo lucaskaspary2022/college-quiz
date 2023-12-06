@@ -195,7 +195,7 @@ export default function Quiz({ questions, currentQuestion, setCurrentQuestion })
             :
             <div className='flex items-center flex-col justify-center'>
               <div className='flex items-center flex-col justify-center text-[#141414] text-center mb-[10px]'>
-                <p className='text-[24px] mb-[10px]'>College List montada!</p>
+                <p className='text-[24px] mb-[10px]'>Sua College List está pronta!</p>
                 <p className='text-[16px]'>Clique no botão para ver</p>
               </div>
               {/* configure button to check if user is client or not */}

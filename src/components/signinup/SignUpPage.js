@@ -39,7 +39,7 @@ function SignUpFormPartOne({onSubmit, useSignUpForm}) {
           } 
         }}
       />
-      <StyledInput 
+      {/* <StyledInput 
         type='password'
         placeholder='Senha'
         error={errors.password}
@@ -59,7 +59,7 @@ function SignUpFormPartOne({onSubmit, useSignUpForm}) {
             }
           }
         }}
-      />
+      /> */}
       <button type="submit" className="px-4 bg-[#ef4444] rounded-lg w-[280px] h-[48px] uppercase text-center text-white mt-6 text-[21px]">
         <div className="flex flex-row items-center">
           <div className="flex flex-1"></div>
@@ -105,7 +105,7 @@ export default function SignUpFormComponent() {
 
       const { email, password } = data;
 
-      createUserWithEmailAndPassword(auth, email, password)
+      createUserWithEmailAndPassword(auth, email, 'Pedro123#')
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
@@ -135,7 +135,7 @@ export default function SignUpFormComponent() {
         loading ? <Loading/> :
         <>
         <div className="w-full flex-row flex items-center justify-center">
-          <p className='font-medium text-[36px]'>Registrar</p>
+          <p className='font-medium text-[36px]'>Digite seu Email</p>
         </div>
         <div className="flex flex-col items-center justify-center mt-2">
           <SignUpFormPartOne useSignUpForm={form1} onSubmit={handleFinalSubmit}/>

@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
-import Logo from '../../../assets/logo_completa.png';
+// import Logo from '../../assets/logo_completa.png';
 import SmallLogo from '../../../assets/logo.png'
 import Image from 'next/image';
 import Quiz from '../../components/quiz/quiz';
@@ -72,9 +72,9 @@ function QuizPage() {
       index: 5,
 			questionText: 'Como você descreveria seu desempenho acadêmico?',
 			answerOptions: [
-				{ answerText: 'Acima da média, com notas excelentes(9-10)', value: 1 },
-				{ answerText: 'Um pouco acima da média, com bom desempenho acadêmico(7-8)', value: 1.5 },
-				{ answerText: 'Na média, com espaço para melhoria(6)', value: 2 },
+				{ answerText: 'Acima da média, com notas excelentes (9-10)', value: 1 },
+				{ answerText: 'Um pouco acima da média, com bom desempenho acadêmico (7-8)', value: 1.5 },
+				{ answerText: 'Na média, com espaço para melhoria (6)', value: 2 },
 				{ answerText: 'Abaixo da média (<6)', value: 3 },
 			],
       icon: <FaBookOpenReader size={150} color='white'/>,
@@ -130,13 +130,13 @@ function QuizPage() {
 		},
     {
       index: 10,
-			questionText: 'Qual região dos Estados Unidos você tem preferência?',
+			questionText: 'Qual cidades/região dos Estados Unidos você tem preferência?',
 			answerOptions: [
-				{ answerText: 'Northeast', value: 1 },
-				{ answerText: 'South', value: 2 },
-				{ answerText: 'Southwest', value: 3 },
-        { answerText: 'Midwest', value: 4 },
-        { answerText: 'West', value: 5 },
+				{ answerText: 'Nova York, NY', value: 1 },
+				{ answerText: 'Miami, Florida', value: 2 },
+				{ answerText: 'Phoenix, Arizona', value: 3 },
+        { answerText: 'Chicago, Illinois', value: 4 },
+        { answerText: 'Portland, Oregon', value: 5 },
 			],
       icon: <FaFlagUsa size={150} color='white'/>,
       smallicon:  <FaFlagUsa size={60} color='black'/>
@@ -174,10 +174,11 @@ function QuizPage() {
   }
 
 	const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [start, setStart] = useState(false)
 
   return (
     <div className='flex flex-col items-center justify-center h-screen py-[100px] bg-[#0e1532]'>
-      <div className="flex flex-col md:flex-row h-screen items-center justify-center bg-[#0e1532] font-custom">
+      <div className="flex flex-col md:flex-row h-full items-center justify-center bg-[#0e1532] pt-[100px] font-custom">
         {/* <PortalBG /> */}
         {/* <div className="md:hidden flex-1" /> */}
         <div className="shadow-xl overflow-visible w-[90vw] sm:w-[70vw] min-h-[360px] md:h-[464px] md:w-[928px] flex flex-col md:flex-row items-center justify-center relative mx-[15px]">
@@ -185,21 +186,32 @@ function QuizPage() {
             {/* <Image alt='small-logo' src={SmallLogo} height={100} width={100}/>
             */}
             {/* <FaBookOpenReader size={50}/> */}
-              {currentQuestion > 11 ? <Image alt='big-logo' src={SmallLogo} height={100} width={100}/> : questions[currentQuestion].smallicon}
+            { start ?
+              <>{currentQuestion > 11 ? <Image alt='big-logo' src={SmallLogo} height={100} width={100}/> : questions[currentQuestion].smallicon}</>
+              : <Image alt='big-logo' src={SmallLogo}  width={50}/>
+              }
           </div>
           <div className="bg-[#F4F7FA] rounded-xl md:rounded-r-none flex flex-col h-full w-full md:w-1/2 md:p-8 p-8 items-center justify-center">
-            <Quiz questions={questions} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion}/>
+            {start ? <Quiz questions={questions} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion}/> : 
+            <div className='flex flex-col justify-between items-center text-center p-[20px] text-[26px]'>
+              <h1>Faça o teste de perfil e descubra quais faculdades mais combinam com você.</h1>
+              <button className='focus:outline-none hover:bg-red-400 w-[50%] text-[16px] bg-red-500 rounded-[15px] flex py-[10px] px-[10px] justify-center text-white items-center border-solid border-[3px] border-red-400 mt-[50px]' onClick={() => setStart(!start)}>START</button>
+            </div>
+            }
           </div>
           <div className="hidden rounded-r-xl md:flex flex-col items-center justify-center h-full w-1/2 bg-red-500">
             <div className="flex text-white flex-col items-center justify-center">
-              {currentQuestion > 11 ? <Image alt='big-logo' src={SmallLogo} height={280} width={280}/> : questions[currentQuestion].icon}
+              { start ?
+                <>{currentQuestion > 11 ? <Image alt='big-logo' src={SmallLogo} height={280} width={280}/> : questions[currentQuestion].icon}</>
+                : <Image alt='big-logo' src={SmallLogo} height={280} width={280}/>
+              }
             </div>
           </div>
         </div>
       </div>
-      <div className='md:mt-[40px]'>
-        <Image src={SmallLogo} alt='bottom-logo' width={120}/>
-      </div>
+     <div className='mt-[20px] md:mt-[40px]'>
+         <Image src={SmallLogo} alt='bottom-logo' width={120}/>
+       </div>
     </div>
 
   )

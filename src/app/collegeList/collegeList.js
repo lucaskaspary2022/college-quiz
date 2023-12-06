@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import '../globals.css'
+import { useRouter } from 'next/navigation'
 
 const CollegeList = ({ collegeList }) => {
 
@@ -19,7 +20,12 @@ const CollegeList = ({ collegeList }) => {
     useEffect(() => {
         console.log(collegeList.dream)
     }, [])
-    
+
+    const router = useRouter()
+
+    const handleButton = () => {
+        router.push('http://conquistandomundo.com.br/');
+    }
 
     const getColor = (category) => {
 
@@ -56,7 +62,8 @@ const CollegeList = ({ collegeList }) => {
                     ))}
                     </ul>
                 </div>
-            ))}                
+            ))}  
+            <button className='focus:outline-none w-full hover:bg-red-400  text-[16px] bg-red-500 rounded-[15px] flex py-[10px] px-[10px] justify-center text-white items-center border-solid border-[3px] border-red-400 mt-[20px]' onClick={handleButton}>Quero Estudar no EUA</button>
         </div>
     //   </div>
         // <ol className='flex flex-col justify-start items-center w-full overflow-y-scroll h-full'>
