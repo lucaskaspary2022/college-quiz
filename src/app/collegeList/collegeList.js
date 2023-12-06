@@ -63,7 +63,7 @@ const CollegeList = ({ collegeList }) => {
                     </ul>
                 </div>
             ))}  
-            <button className='focus:outline-none w-full hover:bg-red-400  text-[16px] bg-red-500 rounded-[15px] flex py-[10px] px-[10px] justify-center text-white items-center border-solid border-[3px] border-red-400 mt-[20px]' onClick={handleButton}>Quero Estudar no EUA</button>
+            <button className='focus:outline-none w-full hover:bg-red-400  text-[16px] bg-red-500 rounded-[15px] flex py-[10px] px-[10px] justify-center text-white items-center border-solid border-[3px] border-red-400 mt-[20px]' onClick={handleButton}>Quero Estudar nos EUA</button>
         </div>
     //   </div>
         // <ol className='flex flex-col justify-start items-center w-full overflow-y-scroll h-full'>
