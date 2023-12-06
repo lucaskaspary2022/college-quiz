@@ -9,7 +9,7 @@ import SignUpFormComponent from '../../components/signinup/SignUpPage'
 
 function SignInUpPage() {
   return (
-    <div className="flex flex-col md:flex-row h-screen items-center justify-center bg-[#0e1532]">
+    <div className="flex flex-col md:flex-row h-screen items-center justify-center bg-[#0e1532] font-custom">
       {/* <PortalBG /> */}
       <div className="md:hidden flex-1" />
       <div className="shadow-xl overflow-visible min-h-[360px] md:h-[464px] md:w-[928px] flex flex-col md:flex-row items-center relative">
@@ -22,7 +22,7 @@ function SignInUpPage() {
         </div>
         <div className="hidden rounded-r-xl md:flex flex-col items-center justify-center h-full w-1/2 bg-red-500">
           <div className="flex text-white flex-col items-center justify-center">
-            <Image src={Logo} height={280} width={280}/>
+            <Image src={SmallLogo} height={280} width={280}/>
           </div>
           <div>
             {/* {signUp ? <SignUpRightComponentText /> : <SignInRightComponentText />} */}
