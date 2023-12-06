@@ -12,10 +12,12 @@ import { FaBookOpenReader } from "react-icons/fa6";
 import { IoSchoolSharp } from "react-icons/io5";
 import { FaFlagUsa } from "react-icons/fa6";
 import { GoGoal } from "react-icons/go";
+import { useAuth } from '@/context/authContext';
 
 function QuizPage() {
 
   const [icon, setIcon] = useState(false)
+  // const { user } = useAuth();
   
   	const questions = [
 		{
@@ -26,8 +28,8 @@ function QuizPage() {
 				{ answerText: 'Clima ameno', value: 2 },
 				{ answerText: 'Clima frio', value: 3 },
 			],
-      icon: <IoPartlySunnyOutline size={150}/>,
-      smallicon:  <IoPartlySunnyOutline size={60}/>
+      icon: <IoPartlySunnyOutline size={150} color='white'/>,
+      smallicon:  <IoPartlySunnyOutline size={60} color='black'/>
 		},
     {
       index: 2,
@@ -39,8 +41,8 @@ function QuizPage() {
 				{ answerText: 'Vou para qualquer clima', value: 0 },
 			],
       isImportanceQuestion: true,
-      icon: <IoPartlySunnyOutline size={150}/>,
-      smallicon:  <IoPartlySunnyOutline size={60}/>
+      icon: <IoPartlySunnyOutline size={150} color='white'/>,
+      smallicon:  <IoPartlySunnyOutline size={60} color='black'/>
 		},
 		{
       index: 3,
@@ -50,8 +52,8 @@ function QuizPage() {
 				{ answerText: 'Preciso de ajuda financeira parcial', value: 1 },
 				{ answerText: 'Dependo principalmente de bolsas de estudo e ajuda financeira', value: 2 },
 			],
-      icon: <IoCashOutline size={150}/>,
-      smallicon:  <IoCashOutline size={60}/>
+      icon: <IoCashOutline size={150} color='white'/>,
+      smallicon:  <IoCashOutline size={60} color='black'/>
 		},
 		{
       index: 4,
@@ -63,8 +65,8 @@ function QuizPage() {
 				{ answerText: 'Nao Preciso de ajuda financeira', value: 0 },
 			],
       isImportanceQuestion: true,
-      icon: <IoCashOutline size={150}/>,
-      smallicon:  <IoCashOutline size={60}/>
+      icon: <IoCashOutline size={150} color='white'/>,
+      smallicon:  <IoCashOutline size={60} color='black'/>
 		},
 		{
       index: 5,
@@ -75,8 +77,8 @@ function QuizPage() {
 				{ answerText: 'Na média, com espaço para melhoria(6)', value: 2 },
 				{ answerText: 'Abaixo da média (<6)', value: 3 },
 			],
-      icon: <FaBookOpenReader size={150}/>,
-      smallicon:  <FaBookOpenReader size={60}/>
+      icon: <FaBookOpenReader size={150} color='white'/>,
+      smallicon:  <FaBookOpenReader size={60} color='black'/>
 		},
     {
       index: 6,
@@ -86,8 +88,8 @@ function QuizPage() {
 				{ answerText: 'Não, prefiro um ambiente acadêmico equilibrado', value: 2 },
 				{ answerText: 'Não, prefiro um ambiente acadêmico mais acolhedor e menos competitivo', value: 3 },
 			],
-      icon: <IoSchoolSharp size={150}/>,
-      smallicon:  <IoSchoolSharp size={60}/>
+      icon: <IoSchoolSharp size={150} color='white'/>,
+      smallicon:  <IoSchoolSharp size={60} color='black'/>
 		},
     {
       index: 7,
@@ -99,8 +101,8 @@ function QuizPage() {
         { answerText: 'Não é importante', value: 0 },
       ],
       isImportanceQuestion: true,
-      icon: <IoSchoolSharp size={150}/>,
-      smallicon:  <IoSchoolSharp size={60}/>
+      icon: <IoSchoolSharp size={150} color='white'/>,
+      smallicon:  <IoSchoolSharp size={60} color='black'/>
     },
     {
       index: 8,
@@ -110,8 +112,8 @@ function QuizPage() {
 				{ answerText: 'Média (5.000 a 15.000 alunos)', value: 2 },
 				{ answerText: 'Grande (mais de 15.000 alunos)', value: 3 },
 			],
-      icon: <FaSchool size={150}/>,
-      smallicon:  <FaSchool size={60}/>
+      icon: <FaSchool size={150} color='white'/>,
+      smallicon:  <FaSchool size={60} color='black'/>
 		},
     {
       index: 9,
@@ -123,8 +125,8 @@ function QuizPage() {
 				{ answerText: 'Tanto faz o tamanho', value: 0 },
 			],
       isImportanceQuestion: true,
-      icon: <FaSchool size={150}/>,
-      smallicon:  <FaSchool size={60}/>
+      icon: <FaSchool size={150} color='white'/>,
+      smallicon:  <FaSchool size={60} color='black'/>
 		},
     {
       index: 10,
@@ -136,8 +138,8 @@ function QuizPage() {
         { answerText: 'Midwest', value: 4 },
         { answerText: 'West', value: 5 },
 			],
-      icon: <FaFlagUsa size={150}/>,
-      smallicon:  <FaFlagUsa size={60}/>
+      icon: <FaFlagUsa size={150} color='white'/>,
+      smallicon:  <FaFlagUsa size={60} color='black'/>
 		},
     {
       index: 11,
@@ -149,8 +151,8 @@ function QuizPage() {
 				{ answerText: 'Tanto faz o local', value: 0 },
 			],
       isImportanceQuestion: true,
-      icon: <FaFlagUsa size={150}/>,
-      smallicon:  <FaFlagUsa size={60}/>
+      icon: <FaFlagUsa size={150} color='white'/>,
+      smallicon:  <FaFlagUsa size={60} color='black'/>
 		},
     {
       index: 12,
@@ -161,8 +163,8 @@ function QuizPage() {
 				{ answerText: 'Trabalho voluntário ou missões', value: 0 },
 				{ answerText: 'Ainda estou explorando opções', value: 0 },
 			],
-      icon: <GoGoal size={150}/>,
-      smallicon:  <GoGoal size={60}/>
+      icon: <GoGoal size={150} color='white'/>,
+      smallicon:  <GoGoal size={60} color='black'/>
 		},
 	];
 
@@ -174,27 +176,32 @@ function QuizPage() {
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 
   return (
-    <div className="flex flex-col md:flex-row h-screen items-center justify-center bg-[#0e1532] py-[100px] font-custom">
-      {/* <PortalBG /> */}
-      {/* <div className="md:hidden flex-1" /> */}
-      <div className="shadow-xl overflow-visible w-[90vw] sm:w-[70vw] min-h-[360px] md:h-[464px] md:w-[928px] flex flex-col md:flex-row items-center justify-center relative mx-[15px]">
-        <div className={`md:hidden bg-[#F4F7FA] rounded-full w-fit absolute ${adjustSpacing()}`}>
-          {/* <Image alt='small-logo' src={SmallLogo} height={100} width={100}/>
-           */}
-           {/* <FaBookOpenReader size={50}/> */}
-            {currentQuestion > 11 ? <Image alt='big-logo' src={SmallLogo} height={100} width={100}/> : questions[currentQuestion].smallicon}
-        </div>
-        <div className="bg-[#F4F7FA] rounded-xl md:rounded-r-none flex flex-col h-full w-full md:w-1/2 md:p-8 p-8 items-center justify-center">
-          <Quiz questions={questions} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion}/>
-        </div>
-        <div className="hidden rounded-r-xl md:flex flex-col items-center justify-center h-full w-1/2 bg-red-500">
-          <div className="flex text-white flex-col items-center justify-center">
-            {currentQuestion > 11 ? <Image alt='big-logo' src={SmallLogo} height={280} width={280}/> : questions[currentQuestion].icon}
-            
+    <div className='flex flex-col items-center justify-center h-screen py-[100px] bg-[#0e1532]'>
+      <div className="flex flex-col md:flex-row h-screen items-center justify-center bg-[#0e1532] font-custom">
+        {/* <PortalBG /> */}
+        {/* <div className="md:hidden flex-1" /> */}
+        <div className="shadow-xl overflow-visible w-[90vw] sm:w-[70vw] min-h-[360px] md:h-[464px] md:w-[928px] flex flex-col md:flex-row items-center justify-center relative mx-[15px]">
+          <div className={`md:hidden bg-[#F4F7FA] rounded-full w-fit absolute ${adjustSpacing()}`}>
+            {/* <Image alt='small-logo' src={SmallLogo} height={100} width={100}/>
+            */}
+            {/* <FaBookOpenReader size={50}/> */}
+              {currentQuestion > 11 ? <Image alt='big-logo' src={SmallLogo} height={100} width={100}/> : questions[currentQuestion].smallicon}
+          </div>
+          <div className="bg-[#F4F7FA] rounded-xl md:rounded-r-none flex flex-col h-full w-full md:w-1/2 md:p-8 p-8 items-center justify-center">
+            <Quiz questions={questions} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion}/>
+          </div>
+          <div className="hidden rounded-r-xl md:flex flex-col items-center justify-center h-full w-1/2 bg-red-500">
+            <div className="flex text-white flex-col items-center justify-center">
+              {currentQuestion > 11 ? <Image alt='big-logo' src={SmallLogo} height={280} width={280}/> : questions[currentQuestion].icon}
+            </div>
           </div>
         </div>
       </div>
+      <div className='md:mt-[40px]'>
+        <Image src={SmallLogo} alt='bottom-logo' width={120}/>
+      </div>
     </div>
+
   )
 }
 

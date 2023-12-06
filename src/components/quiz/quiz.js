@@ -147,7 +147,7 @@ export default function Quiz({ questions, currentQuestion, setCurrentQuestion })
     const similarityScores = compareWithUniversities(responses, universityVectors)
     console.log("Univ Vectors: ", universityVectors)
     console.log("Scores: ", similarityScores)
-    const universities = classifyUniversities(similarityScores, 6, 6, 6)
+    const universities = classifyUniversities(similarityScores, 2, 2, 2)
     console.log("College List: ", universities)
     // universities.dream
     setCollegeList(universities)
@@ -189,7 +189,7 @@ export default function Quiz({ questions, currentQuestion, setCurrentQuestion })
           <div className='h-full flex items-center justify-center w-full'>
             {completed ? 
               <div className='h-full flex flex-col items-center justify-center w-full mt-[70px] md:mt-[40px] pb-[40px] md:pb-[20px]'>
-                <p className='text-[24px] mb-[20px]'>College List</p>
+                <p className='text-[24px] text-[#2d2d2d] mb-[20px]'>College List</p>
                 <CollegeList collegeList={collegeList}/>
               </div>
             :

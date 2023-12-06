@@ -1,13 +1,17 @@
+"use client"
 import React from 'react';
 import Logo from '../../../assets/logo_completa.png';
 import SmallLogo from '../../../assets/logo.png'
 import Image from 'next/image';
 import SignUpFormComponent from '../../components/signinup/SignUpPage'
+import { useRouter } from 'next/navigation';
 // import { SignInRightComponentText, SignInFormComponent } from './SignInPage';
 // import { SignUpRightComponentText, SignUpFormComponent } from './SignUpPage';
 // import PortalBG from '../backgrounds/PortalBg';
 
 function SignInUpPage() {
+  // const router = useRouter()
+
   return (
     <div className="flex flex-col md:flex-row h-screen items-center justify-center bg-[#0e1532] font-custom">
       {/* <PortalBG /> */}
@@ -17,6 +21,7 @@ function SignInUpPage() {
           <Image src={SmallLogo} height={100} width={100}/>
         </div>
         <div className="bg-[#F4F7FA] rounded-xl md:rounded-r-none flex flex-col h-full w-full md:w-1/2 md:p-8 p-8 items-center justify-center">
+            {/* <SignUpFormComponent router={router}/> */}
             <SignUpFormComponent/>
           {/* {signUp ? <SignUpFormComponent onSubmit={onSubmit}/> : <SignInFormComponent onSubmit={onSubmit}/>} */}
         </div>

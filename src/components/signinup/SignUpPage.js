@@ -1,11 +1,26 @@
 "use client";
-
+/** @jsxImportSource @emotion/react */
 import React, { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import {HiChevronLeft, HiChevronRight} from 'react-icons/hi';
 import { StyledInput } from '../forms/StyledInput';
 import { initializeApp } from "firebase/app";
+import { useRouter } from 'next/navigation';
+import { css } from "@emotion/react";
+import { ClipLoader } from "react-spinners";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
+
+const Loading = () => (
+  <div className="flex items-center justify-center">
+    <ClipLoader color="#ef4444" loading size={50} css={override} />
+  </div>
+);
 
 function SignUpFormPartOne({onSubmit, useSignUpForm}) {
   const { watch, register, handleSubmit, formState: { errors } } = useSignUpForm;
@@ -63,9 +78,13 @@ export default function SignUpFormComponent() {
     mode: 'all',
   });
   const [globalError, setGlobalError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const router = useRouter(); // Define the router object/
 
   const handleFinalSubmit = async (data) => {
     try {
+      setLoading(true)
+      // const router = useRouter();
       const firebaseConfig = {
         apiKey: "AIzaSyDtFWQUJjprGLOAZiAKYBZDdTmYzi914pY",
         authDomain: "plataforma-conquistando-f33bb.firebaseapp.com",
@@ -83,6 +102,9 @@ export default function SignUpFormComponent() {
       // const { email, password } = data; // Assuming these fields are named 'email' and 'password'
       // await createUserWithEmailAndPassword(auth, email, password);
       const auth = getAuth(app);
+
+      const { email, password } = data;
+
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           // Signed in 
@@ -96,6 +118,8 @@ export default function SignUpFormComponent() {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
+
+          console.log("ERRO: ",errorMessage)
           // ..
         });
       // Handle successful registration (e.g., redirecting to a dashboard)
@@ -107,13 +131,18 @@ export default function SignUpFormComponent() {
 
   return (
     <>
-      <div className="w-full flex-row flex items-center justify-center">
-        <p className='font-medium text-[36px]'>Registrar</p>
-      </div>
-      <div className="flex flex-col items-center justify-center mt-2">
-        <SignUpFormPartOne useSignUpForm={form1} onSubmit={handleFinalSubmit}/>
-        {globalError && <p className="text-red-500">{globalError}</p>}
-      </div>
+      {
+        loading ? <Loading/> :
+        <>
+        <div className="w-full flex-row flex items-center justify-center">
+          <p className='font-medium text-[36px]'>Registrar</p>
+        </div>
+        <div className="flex flex-col items-center justify-center mt-2">
+          <SignUpFormPartOne useSignUpForm={form1} onSubmit={handleFinalSubmit}/>
+          {globalError && <p className="text-red-500">{globalError}</p>}
+        </div>    
+        </>    
+      }
     </>
   )
 }
