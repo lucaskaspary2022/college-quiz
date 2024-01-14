@@ -16,6 +16,15 @@ module.exports = {
         custom: ['cm', 'sans'], // 'sans' is a fallback font
       },
     },
+    screens: {
+      xs: "480px",
+      mdsm: "550px",
+      ss: "620px",
+      sm: "768px",
+      md: "1060px",
+      lg: "1200px",
+      xl: "1700px",
+    },
   },
   plugins: [],
 }

@@ -168,21 +168,28 @@ function QuizPage() {
 		},
 	];
 
-  const adjustSpacing = () => {
-    if (currentQuestion > 11) return 'top-[-52px]'
-    return 'top-[-40px] p-[20px]'
-  }
-
-	const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
   const [start, setStart] = useState(false)
+  const [spacing, setSpacing] = useState('top-[-40px] p-[20px]')
+
+  useEffect(() => {
+    adjustSpacing()
+  }, [spacing])
+  
+
+  const adjustSpacing = () => {
+    if (currentQuestion > 11) setSpacing('top-[-52px]'); else setSpacing('top-[-40px] p-[20px]')
+    // return 'top-[-52px]'
+    // return 'top-[-40px] p-[20px]'
+  }
 
   return (
     <div className='flex flex-col items-center justify-center h-screen py-[100px] bg-[#0e1532]'>
       <div className="flex flex-col md:flex-row h-full items-center justify-center bg-[#0e1532] pt-[100px] font-custom">
         {/* <PortalBG /> */}
         {/* <div className="md:hidden flex-1" /> */}
-        <div className="shadow-xl overflow-visible w-[90vw] sm:w-[70vw] min-h-[360px] md:h-[464px] md:w-[928px] flex flex-col md:flex-row items-center justify-center relative mx-[15px]">
-          <div className={`md:hidden bg-[#F4F7FA] rounded-full w-fit absolute ${adjustSpacing()}`}>
+        <div className="shadow-xl overflow-visible w-[90vw] sm:w-[70vw] min-h-[360px]  md:w-[928px] flex flex-col md:flex-row items-center justify-center relative mx-[15px] h-full">
+          <div className={`md:hidden bg-[#F4F7FA] rounded-full w-fit absolute ${spacing}`}>
             {/* <Image alt='small-logo' src={SmallLogo} height={100} width={100}/>
             */}
             {/* <FaBookOpenReader size={50}/> */}
@@ -191,10 +198,10 @@ function QuizPage() {
               : <Image alt='big-logo' src={SmallLogo}  width={50}/>
               }
           </div>
-          <div className="bg-[#F4F7FA] rounded-xl md:rounded-r-none flex flex-col h-full w-full md:w-1/2 md:p-8 p-8 items-center justify-center">
+          <div className="bg-[#F4F7FA] rounded-xl md:rounded-r-none flex flex-col w-full md:w-1/2 md:p-8 p-8 items-center justify-center h-auto">
             {start ? <Quiz questions={questions} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion}/> : 
             <div className='flex flex-col justify-between items-center text-center p-[20px] text-[26px]'>
-              <h1>Faça o teste de perfil e descubra quais faculdades mais combinam com você.</h1>
+              <h1>Faça o teste de perfil e cu quais faculdades mais combinam com você.</h1>
               <button className='focus:outline-none hover:bg-red-400 w-[50%] text-[16px] bg-red-500 rounded-[15px] flex py-[10px] px-[10px] justify-center text-white items-center border-solid border-[3px] border-red-400 mt-[50px]' onClick={() => setStart(!start)}>START</button>
             </div>
             }

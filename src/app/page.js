@@ -29,7 +29,7 @@ function QuizPage() {
 				{ answerText: 'Clima frio', value: 3 },
 			],
       icon: <IoPartlySunnyOutline size={150} color='white'/>,
-      smallicon:  <IoPartlySunnyOutline size={60} color='black'/>
+      smallicon:  <IoPartlySunnyOutline size={35} color='black'/>
 		},
     {
       index: 2,
@@ -42,7 +42,7 @@ function QuizPage() {
 			],
       isImportanceQuestion: true,
       icon: <IoPartlySunnyOutline size={150} color='white'/>,
-      smallicon:  <IoPartlySunnyOutline size={60} color='black'/>
+      smallicon:  <IoPartlySunnyOutline size={35} color='black'/>
 		},
 		{
       index: 3,
@@ -53,7 +53,7 @@ function QuizPage() {
 				{ answerText: 'Dependo principalmente de bolsas de estudo e ajuda financeira', value: 2 },
 			],
       icon: <IoCashOutline size={150} color='white'/>,
-      smallicon:  <IoCashOutline size={60} color='black'/>
+      smallicon:  <IoCashOutline size={35} color='black'/>
 		},
 		{
       index: 4,
@@ -66,7 +66,7 @@ function QuizPage() {
 			],
       isImportanceQuestion: true,
       icon: <IoCashOutline size={150} color='white'/>,
-      smallicon:  <IoCashOutline size={60} color='black'/>
+      smallicon:  <IoCashOutline size={35} color='black'/>
 		},
 		{
       index: 5,
@@ -78,7 +78,7 @@ function QuizPage() {
 				{ answerText: 'Abaixo da média (<6)', value: 3 },
 			],
       icon: <FaBookOpenReader size={150} color='white'/>,
-      smallicon:  <FaBookOpenReader size={60} color='black'/>
+      smallicon:  <FaBookOpenReader size={35} color='black'/>
 		},
     {
       index: 6,
@@ -89,7 +89,7 @@ function QuizPage() {
 				{ answerText: 'Não, prefiro um ambiente acadêmico mais acolhedor e menos competitivo', value: 3 },
 			],
       icon: <IoSchoolSharp size={150} color='white'/>,
-      smallicon:  <IoSchoolSharp size={60} color='black'/>
+      smallicon:  <IoSchoolSharp size={35} color='black'/>
 		},
     {
       index: 7,
@@ -102,7 +102,7 @@ function QuizPage() {
       ],
       isImportanceQuestion: true,
       icon: <IoSchoolSharp size={150} color='white'/>,
-      smallicon:  <IoSchoolSharp size={60} color='black'/>
+      smallicon:  <IoSchoolSharp size={35} color='black'/>
     },
     {
       index: 8,
@@ -113,7 +113,7 @@ function QuizPage() {
 				{ answerText: 'Grande (mais de 15.000 alunos)', value: 3 },
 			],
       icon: <FaSchool size={150} color='white'/>,
-      smallicon:  <FaSchool size={60} color='black'/>
+      smallicon:  <FaSchool size={35} color='black'/>
 		},
     {
       index: 9,
@@ -126,7 +126,7 @@ function QuizPage() {
 			],
       isImportanceQuestion: true,
       icon: <FaSchool size={150} color='white'/>,
-      smallicon:  <FaSchool size={60} color='black'/>
+      smallicon:  <FaSchool size={35} color='black'/>
 		},
     {
       index: 10,
@@ -139,7 +139,7 @@ function QuizPage() {
         { answerText: 'Portland, Oregon', value: 5 },
 			],
       icon: <FaFlagUsa size={150} color='white'/>,
-      smallicon:  <FaFlagUsa size={60} color='black'/>
+      smallicon:  <FaFlagUsa size={35} color='black'/>
 		},
     {
       index: 11,
@@ -152,7 +152,7 @@ function QuizPage() {
 			],
       isImportanceQuestion: true,
       icon: <FaFlagUsa size={150} color='white'/>,
-      smallicon:  <FaFlagUsa size={60} color='black'/>
+      smallicon:  <FaFlagUsa size={35} color='black'/>
 		},
     {
       index: 12,
@@ -164,55 +164,58 @@ function QuizPage() {
 				{ answerText: 'Ainda estou explorando opções', value: 0 },
 			],
       icon: <GoGoal size={150} color='white'/>,
-      smallicon:  <GoGoal size={60} color='black'/>
+      smallicon:  <GoGoal size={35} color='black'/>
 		},
 	];
 
   const adjustSpacing = () => {
-    if (currentQuestion > 11) return 'top-[-52px]'
-    return 'top-[-40px] p-[20px]'
+    // if (currentQuestion > 11) return 'top-[50px]'
+    return 'top-[45px] p-[20px]'
   }
 
 	const [currentQuestion, setCurrentQuestion] = useState(0);
   const [start, setStart] = useState(false)
 
   return (
-    <div className='flex flex-col items-center justify-center h-screen py-[100px] bg-[#0e1532]'>
-      <div className="flex flex-col md:flex-row h-full items-center justify-center bg-[#0e1532] pt-[100px] font-custom">
-        {/* <PortalBG /> */}
-        {/* <div className="md:hidden flex-1" /> */}
-        <div className="shadow-xl overflow-visible w-[90vw] sm:w-[70vw] min-h-[360px] md:h-[464px] md:w-[928px] flex flex-col md:flex-row items-center justify-center relative mx-[15px]">
-          <div className={`md:hidden bg-[#F4F7FA] rounded-full w-fit absolute ${adjustSpacing()}`}>
-            {/* <Image alt='small-logo' src={SmallLogo} height={100} width={100}/>
-            */}
-            {/* <FaBookOpenReader size={50}/> */}
-            { start ?
-              <>{currentQuestion > 11 ? <Image alt='big-logo' src={SmallLogo} height={100} width={100}/> : questions[currentQuestion].smallicon}</>
-              : <Image alt='big-logo' src={SmallLogo}  width={50}/>
-              }
-          </div>
-          <div className="bg-[#F4F7FA] rounded-xl md:rounded-r-none flex flex-col h-full w-full md:w-1/2 md:p-8 p-8 items-center justify-center">
-            {start ? <Quiz questions={questions} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion}/> : 
-            <div className='flex flex-col justify-between text-black items-center text-center p-[18px] text-[26px]'>
-              <h1>Faça o teste de perfil e descubra quais faculdades mais combinam com você.</h1>
-              <button className='focus:outline-none hover:bg-red-400 w-[50%] text-[16px] bg-red-500 rounded-[15px] flex py-[10px] px-[10px] justify-center text-white items-center border-solid border-[3px] border-red-400 mt-[50px]' onClick={() => setStart(!start)}>START</button>
-            </div>
-            }
-          </div>
-          <div className="hidden rounded-r-xl md:flex flex-col items-center justify-center h-full w-1/2 bg-red-500">
-            <div className="flex text-white flex-col items-center justify-center">
+    // <div className='bg-[#0e1532] h-screen'>/
+      <div className='flex flex-col items-center justify-center md:h-screen py-[200px] md:py-[50px] bg-[#0e1532] h-auto'>
+        <div className="flex flex-col md:flex-row h-full items-center justify-center bg-[#0e1532]  font-custom">
+          {/* <PortalBG /> */}
+          {/* <div className="md:hidden flex-1" /> */}
+          <div className="shadow-xl overflow-visible w-[90vw] sm:w-[70vw] min-h-[360px] md:h-[464px] md:w-[928px] flex flex-col md:flex-row items-center justify-center relative mx-[15px]">
+            <div className={`md:hidden bg-[#F4F7FA] rounded-full w-fit relative ${adjustSpacing()}`}>
+              {/* <Image alt='small-logo' src={SmallLogo} height={100} width={100}/>
+              */}
+              {/* <FaBookOpenReader size={50}/> */}
               { start ?
-                <>{currentQuestion > 11 ? <Image alt='big-logo' src={SmallLogo} height={280} width={280}/> : questions[currentQuestion].icon}</>
-                : <Image alt='big-logo' src={SmallLogo} height={280} width={280}/>
+                <>{currentQuestion > 11 ? <Image alt='big-logo' src={SmallLogo} width={50}/> : questions[currentQuestion].smallicon}</>
+                : <Image alt='big-logo' src={SmallLogo}  width={50}/>
+                }
+            </div>
+            <div className="bg-[#F4F7FA] rounded-xl md:rounded-r-none flex flex-col w-full md:w-1/2 md:p-8 p-8 items-center justify-center md:h-full">
+              {start ? <Quiz questions={questions} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion}/> : 
+              <div className='flex flex-col justify-between text-black items-center text-center p-[18px] text-[26px]'>
+                <h1>Faça o teste de perfil e descubra quais faculdades mais combinam com você.</h1>
+                <button className='focus:outline-none hover:bg-red-400 w-[50%] text-[16px] bg-red-500 rounded-[15px] flex py-[10px] px-[10px] justify-center text-white items-center border-solid border-[3px] border-red-400 mt-[50px]' onClick={() => setStart(!start)}>START</button>
+              </div>
               }
+            </div>
+            <div className="hidden rounded-r-xl md:flex flex-col items-center justify-center h-full w-1/2 bg-red-500">
+              <div className="flex text-white flex-col items-center justify-center">
+                { start ?
+                  <>{currentQuestion > 11 ? <Image alt='big-logo' src={SmallLogo} height={280} width={280}/> : questions[currentQuestion].icon}</>
+                  : <Image alt='big-logo' src={SmallLogo} height={280} width={280}/>
+                }
+              </div>
             </div>
           </div>
         </div>
-      </div>
-     <div className='mt-[20px] md:mt-[40px]'>
-         <Image src={SmallLogo} alt='bottom-logo' width={120}/>
-       </div>
-    </div>
+        <div className='mt-[30px] md:mt-[40px]'>
+          <Image src={SmallLogo} alt='bottom-logo' width={120}/>
+        </div>
+      </div>      
+    // </div>
+
 
   )
 }
